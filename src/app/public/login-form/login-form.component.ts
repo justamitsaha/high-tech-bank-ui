@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiServiceService } from 'src/app/service/api-service.service';
 
 @Component({
@@ -10,38 +11,49 @@ import { ApiServiceService } from 'src/app/service/api-service.service';
 export class LoginFormComponent implements OnInit {
 
   loginForm = new FormGroup({
-    userName: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
   formChange = {
-    userName: false,
+    username: false,
     password: false
   }
 
 
   constructor(
-    private apiServiceService: ApiServiceService
+    private apiServiceService: ApiServiceService,
+    private router: Router
   ) { }
 
   ngOnInit(): void { }
 
   onFormChange(event: any): void {
-    if (event.target.id == "userName") {
-      this.formChange.userName = true
+    if (event.target.id == "username") {
+      this.formChange.username = true
     } else if (event.target.id == "password") {
       this.formChange.password = true
     }
   }
 
+  onSubmit(data: any): void {
+    this.apiServiceService.login2(data).subscribe(result => {
+      debugger;
+    });
+  }
+
   login(): void {
     let payload = {
-      'username': this.loginForm.value.userName,
+      'username': this.loginForm.value.username,
       'password': this.loginForm.value.password
     };
 
-    this.apiServiceService.login(payload).subscribe(response => {
-      debugger;
+    this.apiServiceService.login(this.loginForm.value).subscribe(response => {
+      let xsrf = response.headers.get('XSRF-TOKEN');
+      let auth = response.headers.get('Authorization');
+      let x = response.headers.get('Content-Type');
+      let y = response.headers.get('Set-Cookie');
+      this.router.navigate(['/dashboard']);
     })
 
   }
