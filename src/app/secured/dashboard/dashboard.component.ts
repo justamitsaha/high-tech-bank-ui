@@ -16,7 +16,20 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get(environment.baseurl + "/dashboard", { observe: 'response', withCredentials: true }).subscribe(response => {
+    this.http.get(
+      environment.baseurl + "/dashboard",
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Authorization': "" + window.sessionStorage.getItem('Authorization'),
+        },
+        observe: 'response',
+        withCredentials: true,
+        responseType: 'text'
+      }
+    ).subscribe(response => {
       debugger;
     });
   }

@@ -11,11 +11,13 @@ export class ApiServiceService {
   constructor(private http: HttpClient) { }
 
   login(payload: any) {
-    return this.http.post(environment.baseurl + "/authenticate", payload, { observe: 'response' });
-  }
-
-  login2(data: any) {
-    return this.http.post(environment.baseurl + "/authenticate", data)
+    return this.http.post(
+      environment.baseurl + "/authenticate",
+      payload,
+      {
+        observe: 'response',
+        responseType: 'text'
+      });
   }
 
 }

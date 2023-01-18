@@ -36,11 +36,6 @@ export class LoginFormComponent implements OnInit {
     }
   }
 
-  onSubmit(data: any): void {
-    this.apiServiceService.login2(data).subscribe(result => {
-      debugger;
-    });
-  }
 
   login(): void {
     let payload = {
@@ -49,10 +44,7 @@ export class LoginFormComponent implements OnInit {
     };
 
     this.apiServiceService.login(this.loginForm.value).subscribe(response => {
-      let xsrf = response.headers.get('XSRF-TOKEN');
-      let auth = response.headers.get('Authorization');
-      let x = response.headers.get('Content-Type');
-      let y = response.headers.get('Set-Cookie');
+      window.sessionStorage.setItem("Authorization", response.headers.get('Authorization')!);
       this.router.navigate(['/dashboard']);
     })
 
