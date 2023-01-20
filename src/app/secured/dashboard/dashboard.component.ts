@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, } from '@angular/core';
+import { ApiServiceService } from 'src/app/service/api-service.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,30 +8,24 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  accountResponse: any;
   constructor(
-    private http: HttpClient
+    private apiServiceService: ApiServiceService
   ) {
 
   }
 
   ngOnInit(): void {
-    this.http.get(
-      environment.baseurl + "/dashboard",
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Authorization': "" + window.sessionStorage.getItem('Authorization'),
-        },
-        observe: 'response',
-        withCredentials: true,
-        responseType: 'text'
-      }
-    ).subscribe(response => {
-      debugger;
-    });
+    let url = environment.baseurl + "/dashboard";
+    url = "http://localhost:4200/assets/json/dashboard.json";
+    this.apiServiceService.callAPI(url).subscribe(data => {
+      this.accountResponse = data.body.response.userAccounts;
+    })
+  }
+
+  getAccordianType(): String {
+    debugger;
+    return "Chut"
   }
 
 }

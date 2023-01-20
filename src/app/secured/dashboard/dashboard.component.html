@@ -1,1 +1,30 @@
-<p>dashboard works!</p>
+<section>
+    <div class="container pt-5 mt-5">
+
+        <div class="accordion" id="accordionPanelsStayOpenExample"
+            *ngFor="let accountGroup of accountResponse; let i = index">
+            <div class="accordion-item">
+                <h2 class="accordion-header" [id]="'panelsStayOpen-' +i">
+                    <button class="accordion-button collapsed custom-accordian-buton" type="button"
+                        data-bs-toggle="collapse" [attr.data-bs-target]="'#panelsStayOpen'+i" aria-expanded="false"
+                        [attr.aria-controls]="'panelsStayOpen'+i">
+                        <div class="float-start">{{accountGroup | accountTypeAccordianText}}</div>
+                    </button>
+                </h2>
+                <div [id]="'panelsStayOpen' +i" class="accordion-collapse collapse"
+                    [attr.aria-labelledby]="'panelsStayOpen'+i">
+                    <div class="accordion-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item">A fourth item</li>
+                            <li class="list-group-item">And a fifth one</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

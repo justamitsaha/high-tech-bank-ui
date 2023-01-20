@@ -1,0 +1,60 @@
+{
+    "status": "success",
+    "statusCode": 200,
+    "response": {
+        "userAccounts": [
+            {
+                "savings": [
+                    {
+                        "accountNumber": 5690754165,
+                        "amount": 15689.89
+                    },
+                    {
+                        "accountNumber": 5690754166,
+                        "amount": 15689.89
+                    }
+                ]
+            },
+            {
+                "checking": [
+                    {
+                        "accountNumber": 5690754165,
+                        "amount": 15689.89
+                    }
+                ]
+            },
+            {
+                "fd": [
+                    {
+                        "accountNumber": 5690754165,
+                        "amount": 15689.89
+                    }
+                ]
+            },
+            {
+                "loans": [
+                    {
+                        "accountNumber": 5690754165,
+                        "amount": 15689.89
+                    }
+                ]
+            },
+            {
+                "demat": [
+                    {
+                        "accountNumber": 5690754165,
+                        "amount": 15689.89
+                    }
+                ]
+            },
+            {
+                "investments": [
+                    {
+                        "accountNumber": 5690754165,
+                        "amount": 15689.89
+                    }
+                ]
+            }
+        ]
+    }
+}

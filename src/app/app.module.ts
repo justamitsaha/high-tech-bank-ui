@@ -9,6 +9,8 @@ import { LoginFormComponent } from './public/login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './secured/dashboard/dashboard.component';
+import { SidebarComponent } from './secured/sidebar/sidebar.component';
+import { AccountTypeAccordianTextPipe } from './pipes/account-type-accordian-text.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { DashboardComponent } from './secured/dashboard/dashboard.component';
     HomeComponent,
     LoginComponent,
     LoginFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidebarComponent,
+    AccountTypeAccordianTextPipe,
   ],
   imports: [
     BrowserModule,
