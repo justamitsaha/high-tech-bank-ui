@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DashboardComponent implements OnInit {
   accountResponse: any;
+  accountType = new Set();
   constructor(
     private apiServiceService: ApiServiceService
   ) {
@@ -20,6 +21,9 @@ export class DashboardComponent implements OnInit {
     url = "http://localhost:4200/assets/json/dashboard.json";
     this.apiServiceService.callAPI(url).subscribe(data => {
       this.accountResponse = data.body.response.userAccounts;
+      this.accountResponse.forEach((item: { type: unknown; }) => {
+        this.accountType.add(item.type);
+      });
     })
   }
 

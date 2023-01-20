@@ -2,9 +2,9 @@ export const hiTechBankConstants = {
     ACCOUNT_TYPES: {
         "savings": "Savings Account",
         "fd": "Fixed Deposits",
-        "checking": "Checking Accounts",
-        "loans": "Loans",
+        "current": "Current Accounts",
+        "loan": "Loans",
         "demat": "Demat Account",
-        "investments": "Investment Accounts"
+        "investment": "Investment Accounts"
     }
 }

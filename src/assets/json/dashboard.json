@@ -4,56 +4,39 @@
     "response": {
         "userAccounts": [
             {
-                "savings": [
-                    {
-                        "accountNumber": 5690754165,
-                        "amount": 15689.89
-                    },
-                    {
-                        "accountNumber": 5690754166,
-                        "amount": 15689.89
-                    }
-                ]
+                "accountNumber": 5690754165,
+                "amount": 15689.89,
+                "type": "savings"
             },
             {
-                "checking": [
-                    {
-                        "accountNumber": 5690754165,
-                        "amount": 15689.89
-                    }
-                ]
+                "accountNumber": 23434334,
+                "amount": 23322.89,
+                "type": "savings"
             },
             {
-                "fd": [
-                    {
-                        "accountNumber": 5690754165,
-                        "amount": 15689.89
-                    }
-                ]
+                "accountNumber": 7834873498,
+                "amount": 8723.89,
+                "type": "current"
             },
             {
-                "loans": [
-                    {
-                        "accountNumber": 5690754165,
-                        "amount": 15689.89
-                    }
-                ]
+                "accountNumber": 123233223,
+                "amount": 110932.89,
+                "type": "loan"
             },
             {
-                "demat": [
-                    {
-                        "accountNumber": 5690754165,
-                        "amount": 15689.89
-                    }
-                ]
+                "accountNumber": 212323243,
+                "amount": 520505.89,
+                "type": "fd"
             },
             {
-                "investments": [
-                    {
-                        "accountNumber": 5690754165,
-                        "amount": 15689.89
-                    }
-                ]
+                "accountNumber": 738748722,
+                "amount": 1111.89,
+                "type": "demat"
+            },
+            {
+                "accountNumber": 878738222,
+                "amount": 12332233.89,
+                "type": "investment"
             }
         ]
     }

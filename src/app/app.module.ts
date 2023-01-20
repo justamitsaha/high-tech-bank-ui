@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './secured/dashboard/dashboard.component';
 import { SidebarComponent } from './secured/sidebar/sidebar.component';
 import { AccountTypeAccordianTextPipe } from './pipes/account-type-accordian-text.pipe';
+import { GetAccountsOfACategoryPipe } from './pipes/get-accounts-of-acategory.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AccountTypeAccordianTextPipe } from './pipes/account-type-accordian-tex
     DashboardComponent,
     SidebarComponent,
     AccountTypeAccordianTextPipe,
+    GetAccountsOfACategoryPipe,
   ],
   imports: [
     BrowserModule,
