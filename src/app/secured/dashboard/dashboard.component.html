@@ -1,5 +1,5 @@
 <section>
-    <div class="container pt-5 mt-5">
+    <div class="container pt-4 mt-4">
 
         <div class="accordion" id="accordionPanelsStayOpenExample"
             *ngFor="let accountTypeName of accountType; let i = index">
@@ -15,8 +15,9 @@
                     [attr.aria-labelledby]="'panelsStayOpen'+i">
                     <div class="accordion-body">
                         <ul class="list-group" *ngFor="let account of accountResponse">
-                            <li class="list-group-item" *ngIf="accountTypeName == account.type">
-                                <a href="#" class="custom-tap-anchor">
+                            <li class="list-group-item" *ngIf="accountTypeName == account.type"
+                                (click)="navigateToAccount(account)">
+                                <a class="custom-tap-anchor">
                                     <div class="d-flex justify-content-between">
                                         <span>{{account.accountNumber }}</span>
                                         <span>{{account.amount}}</span>

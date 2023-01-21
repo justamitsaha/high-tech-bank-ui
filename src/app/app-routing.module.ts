@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './public/login/login.component';
 import { DashboardComponent } from './secured/dashboard/dashboard.component';
+import { AccountDetailsComponent } from './secured/account-details/account-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -10,10 +11,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'secure',
-    redirectTo: 'secure/dashboard',
+    redirectTo: 'secure/accounts/dashboard',
     pathMatch: 'full'
   },
-  { path: 'secure/dashboard', component: DashboardComponent }
+  { path: 'secure/accounts/dashboard', component: DashboardComponent },
+  { path: 'secure/accounts/details', component: AccountDetailsComponent }
 ];
 
 @NgModule({

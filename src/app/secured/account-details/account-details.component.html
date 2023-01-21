@@ -1,0 +1,18 @@
+<section>
+    <div class="container pt-4 mt-4">
+        <div class="card text-center" *ngIf="!!acountDetails">
+            <div class="card-header">
+                {{acountDetails.type|accountTypeAccordianText}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Balance {{acountDetails.amount}} </h5>
+                <p class="card-text">Account Number {{acountDetails.accountNumber}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+    </div>
+
+</section>
