@@ -13,6 +13,7 @@ import { SidebarComponent } from './secured/sidebar/sidebar.component';
 import { AccountTypeAccordianTextPipe } from './pipes/account-type-accordian-text.pipe';
 import { GetAccountsOfACategoryPipe } from './pipes/get-accounts-of-acategory.pipe';
 import { AccountDetailsComponent } from './secured/account-details/account-details.component';
+import { OpenAccountComponent } from './public/open-account/open-account.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AccountDetailsComponent } from './secured/account-details/account-detai
     AccountTypeAccordianTextPipe,
     GetAccountsOfACategoryPipe,
     AccountDetailsComponent,
+    OpenAccountComponent,
   ],
   imports: [
     BrowserModule,

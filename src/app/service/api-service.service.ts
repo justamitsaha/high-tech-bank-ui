@@ -37,4 +37,17 @@ export class ApiServiceService {
       });
   }
 
+  nonSecurePost(url: string, payload?: any): Observable<any> {
+    if (environment.isLocal) {
+      return this.http.get(url,);
+    } else {
+      return this.http.post(
+        url,
+        payload,
+        {
+          observe: 'response',
+          responseType: 'json'
+        });
+    }
+  }
 }

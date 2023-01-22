@@ -1,0 +1,104 @@
+<section>
+    <div class="container pt-4 mt-4">
+        <form class="row g-3" [formGroup]="openAccount">
+            <div class="col-md-6">
+                <label for="accountType" class="form-label">Account Type</label>
+                <select id="accountType" formControlName="accountType" class="form-select">
+                    <option *ngFor="let type of accountTypes" value="{{type.id}}">{{type.value}}</option>
+                </select>
+                <div id="accountTypeError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['accountType'].invalid &&  (openAccount.controls['accountType'].touched)">
+                    Please select account Type
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="dob" class="form-label">Date of birth</label>
+                <input type="date" formControlName="dob" class="form-control" id="name">
+                <div id="dobError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['dob'].invalid &&  (openAccount.controls['dob'].touched)">
+                    Please enter your date of birth
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" formControlName="name" class="form-control" id="name">
+                <div id="nameError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['name'].invalid &&  (openAccount.controls['name'].touched)">
+                    Please enter name
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="pan" class="form-label">PAN card number</label>
+                <input type="text" formControlName="pan" class="form-control" id="pan">
+                <div id="panError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['pan'].invalid &&  (openAccount.controls['pan'].touched)">
+                    Please enter PAN number
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="address1" class="form-label">Address</label>
+                <input type="text" formControlName="address1" class="form-control" id="address1"
+                    placeholder="1234 Main St">
+                <div id="address1Error" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['address1'].invalid &&  (openAccount.controls['address1'].touched)">
+                    Please enter your address
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="address2" class="form-label">Address 2</label>
+                <input type="text" formControlName="address2" class="form-control" id="address2"
+                    placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="col-md-4">
+                <label for="city" class="form-label">City</label>
+                <input type="text" formControlName="city" class="form-control" id="city">
+                <div id="cityError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['city'].invalid &&  (openAccount.controls['city'].touched)">
+                    Please enter your address
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <select id="state" formControlName="state" class="form-select">
+                    <option *ngFor="let state of stateList" value="{{state.id}}">{{state.value}}</option>
+                </select>
+                <div id="stateError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['state'].invalid &&  (openAccount.controls['state'].touched)">
+                    Please select your state
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="pincode" class="form-label">Zip</label>
+                <input type="text" formControlName="pincode" class="form-control" id="pincode">
+                <div id="pincodeError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['pincode'].invalid &&  (openAccount.controls['pincode'].touched)">
+                    Please enter your pin code
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" formControlName="email" class="form-control" id="email">
+                <div id="emailError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['email'].invalid &&  (openAccount.controls['email'].touched)">
+                    Please enter valid email
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="text" formControlName="phone" class="form-control" id="phone" pattern="[6-9]{1}[0-9]{9}">
+                <div id=" phoneError" class="form-text error-form-text"
+                    *ngIf="openAccount.controls['phone'].invalid &&  (openAccount.controls['phone'].touched)">
+                    Please enter valid phone number
+                </div>
+            </div>
+
+            <div class="col col-md-6 d-grid gap-2 p-0 pl-1 tab-button ">
+                <button class="btn btn-light" type="button" (click)="resetForm()">Reset</button>
+            </div>
+            <div class=" col col-md-6 d-grid gap-2 p-0 pl-1 tab-button ">
+                <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()">Apply for account</button>
+            </div>
+        </form>
+    </div>
+</section>
