@@ -54,12 +54,15 @@ pre {
     line-height: 18.5714px;
 }
 
-// .fixed-image {
-//     width: 100%;
-//     /* or any custom size */
-//     object-fit: contain;
-//     min-height: 100vh;
-// }
+@media only screen and (max-width: 600px) {
+    .custom-mobile-small-text {
+        font-size: 11px;
+    }
+
+    .custom-mobile-large-text {
+        font-size: 1rem;
+    }
+}
 
 .tab-button {
     height: 5vh;
