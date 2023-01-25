@@ -14,6 +14,7 @@ import { AccountTypeAccordianTextPipe } from './pipes/account-type-accordian-tex
 import { GetAccountsOfACategoryPipe } from './pipes/get-accounts-of-acategory.pipe';
 import { AccountDetailsComponent } from './secured/account-details/account-details.component';
 import { OpenAccountComponent } from './public/open-account/open-account.component';
+import { SavingsComponent } from './public/savings/savings.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { OpenAccountComponent } from './public/open-account/open-account.compone
     GetAccountsOfACategoryPipe,
     AccountDetailsComponent,
     OpenAccountComponent,
+    SavingsComponent,
   ],
   imports: [
     BrowserModule,

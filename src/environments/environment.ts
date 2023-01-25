@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   baseurl: 'http://localhost:8080',
   baseImageURL: "http://localhost:4200/assets/images",
-  isLocal: true
+  isLocal: false
 };
 
 /*

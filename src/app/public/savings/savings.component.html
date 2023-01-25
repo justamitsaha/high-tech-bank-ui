@@ -1,0 +1,52 @@
+<section>
+    <div class="container pt-4 mt-4">
+        <div id="about" class="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="titlepage">
+                            <h2>Savings Account</h2>
+                            <span>It is a long established fact that a reader will be distracted by the readable content
+                                of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                more-or-less normal distribution of letters, a </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row flexcss">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="about-box">
+                            <h3>distracted by the readable </h3>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of
+                                a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                                more-or-less normal distribution of letters, aIt is a long established fact that a
+                                reader will be distracted by the readable content of a page when looking at its layout.
+                                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+                                letters, aIt is a long established fact that a reader will be distracted by the readable
+                                content of a page when looking at its layout. The point of using Lorem Ipsum is that it
+                                has a more-or-less normal distribution of lettersdistracted by the readable distracted
+                                by the readable , a</p>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="about-img">
+
+                            <figure><img src="../../../assets/images/savings/aboutimg.png" alt="img" /></figure>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col col-md-6 d-grid gap-2 p-0 pl-1 tab-button ">
+                    <button class="btn btn-dark" type="button" (click)="showAccForm()">Come bank with us</button>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="showForm">
+            <app-open-account></app-open-account>
+        </div>
+    </div>
+</section>
