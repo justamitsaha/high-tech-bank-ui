@@ -28,19 +28,40 @@
                                 has a more-or-less normal distribution of lettersdistracted by the readable distracted
                                 by the readable , a</p>
 
+                            <table>
+                                <tr>
+                                    <th>Account Type</th>
+                                    <th>Interest %</th>
+                                </tr>
+                                <tr>
+                                    <td>Savings</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Senior citizen Savings</td>
+                                    <td>7%</td>
+                                </tr>
+                                <tr>
+                                    <td>Current Account</td>
+                                    <td>0%</td>
+                                </tr>
+                            </table>
+
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                         <div class="about-img">
 
-                            <figure><img src="../../../assets/images/savings/aboutimg.png" alt="img" /></figure>
+                            <figure><img class="custom-image" src="../../../assets/images/savings/aboutimg.png"
+                                    alt="img" /></figure>
 
                         </div>
 
                     </div>
                 </div>
                 <div class="col col-md-6 d-grid gap-2 p-0 pl-1 tab-button ">
-                    <button class="btn btn-dark" type="button" (click)="showAccForm()">Come bank with us</button>
+                    <button class="btn btn-dark" type="button" (click)="showAccForm()" [disabled]="showForm">Come bank
+                        with us</button>
                 </div>
             </div>
         </div>
