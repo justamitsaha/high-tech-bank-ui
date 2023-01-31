@@ -15,6 +15,7 @@ import { GetAccountsOfACategoryPipe } from './pipes/get-accounts-of-acategory.pi
 import { AccountDetailsComponent } from './secured/account-details/account-details.component';
 import { OpenAccountComponent } from './public/open-account/open-account.component';
 import { SavingsComponent } from './public/savings/savings.component';
+import { LoansComponent } from './public/loans/loans.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SavingsComponent } from './public/savings/savings.component';
     AccountDetailsComponent,
     OpenAccountComponent,
     SavingsComponent,
+    LoansComponent,
   ],
   imports: [
     BrowserModule,

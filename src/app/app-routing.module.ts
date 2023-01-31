@@ -6,6 +6,7 @@ import { DashboardComponent } from './secured/dashboard/dashboard.component';
 import { AccountDetailsComponent } from './secured/account-details/account-details.component';
 import { OpenAccountComponent } from './public/open-account/open-account.component';
 import { SavingsComponent } from './public/savings/savings.component';
+import { LoansComponent } from './public/loans/loans.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'open-account', component: OpenAccountComponent },
   { path: 'savings', component: SavingsComponent },
+  { path: 'loans', component: LoansComponent },
   {
     path: 'secure',
     redirectTo: 'secure/accounts/dashboard',
