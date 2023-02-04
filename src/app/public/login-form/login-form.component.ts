@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ApiServiceService } from 'src/app/service/api-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-form',
@@ -23,7 +25,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private apiServiceService: ApiServiceService,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void { }
@@ -43,11 +46,14 @@ export class LoginFormComponent implements OnInit {
       'password': this.loginForm.value.password
     };
 
-    this.apiServiceService.login(this.loginForm.value)
+    let url = environment.baseurl + "/authentication/public/authenticate";
+    this.apiServiceService.apiCall(url, 'POST', this.loginForm.value)
       .subscribe(response => {
-        window.sessionStorage.setItem("Authorization", response.headers.get('Authorization')!);
+        let auth = response.headers.get('Authorization')!;
+        this.cookieService.set("Authorization", auth);
+        //window.sessionStorage.setItem("Authorization", auth);
         this.router.navigate(['/secure/accounts/dashboard']);
-      })
+      });
 
   }
 

@@ -30,13 +30,15 @@ export class DashboardComponent implements OnInit {
     } else {
       let url = environment.baseurl + "/authentication/private/dashboard";
       //url = "http://localhost:4200/assets/json/dashboard.json";
-      this.apiServiceService.callAPI(url).subscribe(data => {
-        this.cacheService.setAccountSummary(data.body.response.userAccounts);
-        this.accountResponse = data.body.response.userAccounts;
-        this.accountResponse.forEach((item: { type: unknown; }) => {
-          this.accountType.add(item.type);
-        });
-      })
+      this.apiServiceService.apiCall(url, 'GET')
+        .subscribe(data => {
+          this.cacheService.setAccountSummary(data.body.response.userAccounts);
+          this.accountResponse = data.body.response.userAccounts;
+          this.accountResponse.forEach((item: { type: unknown; }) => {
+            this.accountType.add(item.type);
+          });
+        })
+
     }
   }
 

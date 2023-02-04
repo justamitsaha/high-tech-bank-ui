@@ -50,10 +50,11 @@ export class OpenAccountComponent implements OnInit {
 
   applyForOpenAccount() {
     let url = environment.baseurl + "/onboarding/public/applyToOpenAccount";
-    //url = "http://localhost:4200/assets/json/applyForAccount.json";
-    this.apiService.nonSecurePost(url, this.openAccount.value).subscribe(response => {
-      debugger;
-    })
+
+    this.apiService.apiCall(url, 'POST', this.openAccount.value)
+      .subscribe(response => {
+        debugger;
+      });
   }
 
 }
