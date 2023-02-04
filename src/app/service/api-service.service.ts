@@ -12,7 +12,7 @@ export class ApiServiceService {
 
   login(payload: any) {
     return this.http.post(
-      environment.baseurl + "/authenticate",
+      environment.baseurl + "/authentication/public/authenticate",
       payload,
       {
         observe: 'response',
@@ -29,11 +29,11 @@ export class ApiServiceService {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Access-Control-Allow-Headers': 'Content-Type',
-          'Authorization': "" + window.sessionStorage.getItem('Authorization'),
+          //'Authorization': "" + window.sessionStorage.getItem('Authorization'),
         },
         observe: 'response',
         withCredentials: true,
-        responseType: 'json'
+        responseType: 'text'
       });
   }
 

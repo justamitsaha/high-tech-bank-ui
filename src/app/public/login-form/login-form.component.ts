@@ -43,10 +43,11 @@ export class LoginFormComponent implements OnInit {
       'password': this.loginForm.value.password
     };
 
-    this.apiServiceService.login(this.loginForm.value).subscribe(response => {
-      window.sessionStorage.setItem("Authorization", response.headers.get('Authorization')!);
-      this.router.navigate(['/dashboard']);
-    })
+    this.apiServiceService.login(this.loginForm.value)
+      .subscribe(response => {
+        window.sessionStorage.setItem("Authorization", response.headers.get('Authorization')!);
+        this.router.navigate(['/secure/accounts/dashboard']);
+      })
 
   }
 

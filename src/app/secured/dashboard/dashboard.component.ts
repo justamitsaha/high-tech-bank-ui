@@ -28,8 +28,8 @@ export class DashboardComponent implements OnInit {
         this.accountType.add(item.type);
       });
     } else {
-      let url = environment.baseurl + "/dashboard";
-      url = "http://localhost:4200/assets/json/dashboard.json";
+      let url = environment.baseurl + "/authentication/private/dashboard";
+      //url = "http://localhost:4200/assets/json/dashboard.json";
       this.apiServiceService.callAPI(url).subscribe(data => {
         this.cacheService.setAccountSummary(data.body.response.userAccounts);
         this.accountResponse = data.body.response.userAccounts;
