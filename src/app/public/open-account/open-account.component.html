@@ -93,6 +93,19 @@
                 </div>
             </div>
 
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Address Proof</label>
+                    <input class="form-control" type="file" id="multipartFile1" (change)="onFileSelected($event)">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Age Proof</label>
+                    <input class="form-control" type="file" id="multipartFile2" (change)="onFileSelected($event)">
+                </div>
+            </div>
+
             <div class="col col-md-6 d-grid gap-2 p-0 pl-1 tab-button ">
                 <button class="btn btn-light" type="button" (click)="resetForm()">Reset</button>
             </div>

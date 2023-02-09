@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { Observable, Subject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { of } from 'rxjs';
 
@@ -16,8 +15,9 @@ export class ApiServiceService {
   ) { }
 
   apiCall(url: string, callType: String, payload?: any): Observable<any> {
+    let responseSubject = new Subject<any>();
     if (callType === 'GET') {
-      return this.http.get(
+      this.http.get(
         url,
         {
           headers: {
@@ -25,21 +25,39 @@ export class ApiServiceService {
             'Accept': 'application/json',
             'Access-Control-Allow-Headers': 'Content-Type',
             'Authorization': "" + this.cookieService.get('Authorization'),
+            'x-requested-with': 'XMLHttpRequest'
           },
           observe: 'response',
           withCredentials: true,
-          responseType: 'text'
-        });
+          responseType: 'text',
+
+        }).pipe()
+        .subscribe(
+          (data) => {
+            responseSubject.next(data);
+          },
+          (error) => {
+            responseSubject.error(error);
+          });
     } else if (callType === 'POST') {
-      return this.http.post(
+      this.http.post(
         url,
         payload,
         {
-          observe: 'response',
+          observe: 'events',
           responseType: 'text'
-        });
+        }).pipe()
+        .subscribe(
+          (data) => {
+            responseSubject.next(data);
+          },
+          (error) => {
+            responseSubject.error(error);
+          });;
     } else {
-      return of(null);
+      responseSubject.error(null);
     }
+
+    return responseSubject;
   }
 }

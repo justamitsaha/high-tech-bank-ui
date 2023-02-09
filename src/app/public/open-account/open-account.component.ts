@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 export class OpenAccountComponent implements OnInit {
   stateList: any;
   accountTypes: any;
+  fileForm = new FormData();
 
   constructor(
     private apiService: ApiServiceService
@@ -48,10 +49,20 @@ export class OpenAccountComponent implements OnInit {
     this.openAccount.reset();
   }
 
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.fileForm.append(event.target.id, file);
+    }
+  }
+
   applyForOpenAccount() {
     let url = environment.baseurl + "/onboarding/public/applyToOpenAccount";
-
-    this.apiService.apiCall(url, 'POST', this.openAccount.value)
+    const blobOverrides = new Blob([JSON.stringify(this.openAccount.value)], {
+      type: 'application/json',
+    });
+    this.fileForm.append("onboardUser", blobOverrides);
+    this.apiService.apiCall(url, 'POST', this.fileForm)
       .subscribe(response => {
         debugger;
       });
