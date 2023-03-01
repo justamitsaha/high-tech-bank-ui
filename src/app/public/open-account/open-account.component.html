@@ -1,5 +1,5 @@
 <section>
-    <div class="container pt-4 mt-4">
+    <div class="container pt-4 mt-4" *ngIf="showApplicationForm">
         <form class="row g-3" [formGroup]="openAccount" id="openAccount">
             <div class="col-md-6">
                 <label for="accountType" class="form-label">Account Type</label>
@@ -111,6 +111,42 @@
             </div>
             <div class=" col col-md-6 d-grid gap-2 p-0 pl-1 tab-button ">
                 <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()">Apply for account</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container pt-4 mt-4" *ngIf="showEmailOtp">
+        <form class="row g-3" [formGroup]="verifyEmail" id="verifyEmail">
+            <div class="col-md-6">
+                <label for="eMailOtp" class="form-label">Please enter the OTP recieved on your E mail</label>
+                <input type="text" formControlName="eMailOtp" class="form-control" id="eMailOtp">
+                <div id="eMailOtp" class="form-text error-form-text"
+                    *ngIf="verifyEmail.controls['eMailOtp'].invalid &&  (verifyEmail.controls['eMailOtp'].touched)">
+                    Please enter OTP
+                </div>
+
+                <div class=" col col-md-6 d-grid gap-2 p-0 pl-1 tab-button pt-2">
+                    <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()"
+                        [disabled]="verifyEmail.invalid">Submit OTP</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container pt-4 mt-4" *ngIf="showSMSOtp">
+        <form class="row g-3" [formGroup]="verifySMS" id="verifyEmail">
+            <div class="col-md-6">
+                <label for="smsOTP" class="form-label">Please enter the OTP recieved on your Phone</label>
+                <input type="text" formControlName="smsOTP" class="form-control" id="smsOTP">
+                <div id="smsOTP" class="form-text error-form-text"
+                    *ngIf="verifySMS.controls['smsOTP'].invalid &&  (verifySMS.controls['smsOTP'].touched)">
+                    Please enter OTP
+                </div>
+
+                <div class=" col col-md-6 d-grid gap-2 p-0 pl-1 tab-button pt-2">
+                    <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()"
+                        [disabled]="verifySMS.invalid">Submit OTP</button>
+                </div>
             </div>
         </form>
     </div>

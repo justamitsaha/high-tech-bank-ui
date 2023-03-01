@@ -15,6 +15,10 @@ export class OpenAccountComponent implements OnInit {
   stateList: any;
   accountTypes: any;
   fileForm = new FormData();
+  applicationId: String = '';
+  showApplicationForm: boolean = true;
+  showEmailOtp: boolean = false;
+  showSMSOtp: boolean = false;
 
   constructor(
     private apiService: ApiServiceService
@@ -45,6 +49,14 @@ export class OpenAccountComponent implements OnInit {
     // photo: new FormControl('', Validators.required)
   });
 
+  verifyEmail = new FormGroup({
+    eMailOtp: new FormControl('', Validators.required),
+  });
+
+  verifySMS = new FormGroup({
+    smsOTP: new FormControl('', Validators.required),
+  });
+
   resetForm() {
     this.openAccount.reset();
   }
@@ -57,14 +69,21 @@ export class OpenAccountComponent implements OnInit {
   }
 
   applyForOpenAccount() {
-    let url = environment.baseurl + "/onboarding/public/applyToOpenAccount";
+    let url = environment.baseurl + "/onBoardingService/public/applyToOpenAccount";
+    let methodType = 'POST';
     const blobOverrides = new Blob([JSON.stringify(this.openAccount.value)], {
       type: 'application/json',
     });
+    if (environment.isLocal) {
+      url = 'http://localhost:4200/assets/json/applyForAccount.txt';
+      methodType = 'GET';
+    }
     this.fileForm.append("onboardUser", blobOverrides);
-    this.apiService.apiCall(url, 'POST', this.fileForm)
+    this.apiService.apiCall(url, methodType, this.fileForm)
       .subscribe(response => {
-        debugger;
+        this.applicationId = response.body;
+        this.showApplicationForm = false;
+        this.showSMSOtp = true;
       });
   }
 

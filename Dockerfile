@@ -8,3 +8,4 @@ CMD ["nginx", "-g", "daemon off;"]
 #docker build . -t justamitsaha/high-tech-bank-ui
 #docker  run -d --name webapp2 -p 80:80 justamitsaha/high-tech-bank-ui
 #docker  run -d --name webapp2 -p 80:80 --restart always justamitsaha/high-tech-bank-ui
+#docker  run -d --name webapp2 -p 80:80 --net mynet high-tech-bank justamitsaha/high-tech-bank-ui
