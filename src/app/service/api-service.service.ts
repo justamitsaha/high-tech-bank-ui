@@ -14,7 +14,7 @@ export class ApiServiceService {
     private cookieService: CookieService
   ) { }
 
-  apiCall(url: string, callType: String, payload?: any): Observable<any> {
+  apiCall(url: string, callType: String, payload?: any, responseType?: String): Observable<any> {
     let responseSubject = new Subject<any>();
     if (callType === 'GET') {
       this.http.get(
@@ -45,7 +45,24 @@ export class ApiServiceService {
         payload,
         {
           observe: 'events',
-          responseType: 'text'
+          responseType: 'text',
+          withCredentials: true
+        }).pipe()
+        .subscribe(
+          (data) => {
+            responseSubject.next(data);
+          },
+          (error) => {
+            responseSubject.error(error);
+          });;
+    } else if (callType === 'PUT') {
+      this.http.put(
+        url,
+        payload,
+        {
+          observe: 'events',
+          responseType: 'text',
+          withCredentials: true
         }).pipe()
         .subscribe(
           (data) => {

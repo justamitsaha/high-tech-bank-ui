@@ -26,7 +26,7 @@ export class AccountDetailsComponent implements OnInit {
     } else {
       let url = environment.baseurl + "/dashboard";
       url = "http://localhost:4200/assets/json/dashboard.json";
-      this.apiServiceService.apiCall(url, 'GET').subscribe(data => {
+      this.apiServiceService.apiCall(url, 'GET', '', 'json').subscribe(data => {
         this.cacheService.setAccountSummary(data.body.response.userAccounts);
         this.cacheService.setAccountInView(data.body.response.userAccounts[0]);
         this.acountDetails = this.cacheService.getAccountInView();

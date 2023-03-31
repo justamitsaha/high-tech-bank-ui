@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     } else {
       let url = environment.baseurl + "/authentication/private/dashboard";
       //url = "http://localhost:4200/assets/json/dashboard.json";
-      this.apiServiceService.apiCall(url, 'GET')
+      this.apiServiceService.apiCall(url, 'GET', '', 'json')
         .subscribe(data => {
           this.cacheService.setAccountSummary(data.body.response.userAccounts);
           this.accountResponse = data.body.response.userAccounts;

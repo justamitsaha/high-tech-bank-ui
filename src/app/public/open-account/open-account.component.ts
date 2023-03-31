@@ -19,6 +19,7 @@ export class OpenAccountComponent implements OnInit {
   showApplicationForm: boolean = true;
   showEmailOtp: boolean = false;
   showSMSOtp: boolean = false;
+  showsuccess: boolean = false;
 
   constructor(
     private apiService: ApiServiceService
@@ -79,11 +80,43 @@ export class OpenAccountComponent implements OnInit {
       methodType = 'GET';
     }
     this.fileForm.append("onboardUser", blobOverrides);
-    this.apiService.apiCall(url, methodType, this.fileForm)
+    this.apiService.apiCall(url, methodType, this.fileForm, 'text')
       .subscribe(response => {
         this.applicationId = response.body;
         this.showApplicationForm = false;
+        this.showEmailOtp = false;
+        this.showsuccess = false;
         this.showSMSOtp = true;
+      });
+  }
+
+  verifyOtp(event: any) {
+    let url = environment.baseurl + "/onBoardingService/public/validateOtp";
+    let methodType = 'PUT';
+    if (environment.isLocal) {
+      url = 'http://localhost:4200/assets/json/applyForAccount.txt';
+      methodType = 'GET';
+    }
+    let optType = (event.target.id == 'smsOTP') ? 'SMS_TYPE_OTP' : 'EMAIL_TYPE_OTP';
+    let otp = (event.target.id == 'smsOTP') ? this.verifySMS.value.smsOTP : this.verifyEmail.value.eMailOtp
+    var payload = {
+      "applicationId": this.applicationId,
+      "otp": otp,
+      "type": optType
+    };
+    this.apiService.apiCall(url, methodType, payload, 'text')
+      .subscribe(response => {
+        if ((event.target.id == 'smsOTP')) {
+          this.showApplicationForm = false;
+          this.showEmailOtp = true;
+          this.showsuccess = false;
+          this.showSMSOtp = false;
+        } else {
+          this.showApplicationForm = false;
+          this.showEmailOtp = false;
+          this.showsuccess = true;
+          this.showSMSOtp = false;
+        }
       });
   }
 

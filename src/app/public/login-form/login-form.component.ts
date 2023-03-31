@@ -47,7 +47,7 @@ export class LoginFormComponent implements OnInit {
     };
 
     let url = environment.baseurl + "/authentication/public/authenticate";
-    this.apiServiceService.apiCall(url, 'POST', this.loginForm.value)
+    this.apiServiceService.apiCall(url, 'POST', this.loginForm.value, 'text')
       .subscribe(response => {
         let auth = response.headers.get('Authorization')!;
         this.cookieService.set("Authorization", auth);

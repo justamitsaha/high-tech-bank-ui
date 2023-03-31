@@ -110,7 +110,8 @@
                 <button class="btn btn-light" type="button" (click)="resetForm()">Reset</button>
             </div>
             <div class=" col col-md-6 d-grid gap-2 p-0 pl-1 tab-button ">
-                <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()">Apply for account</button>
+                <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()">Apply for
+                    account</button>
             </div>
         </form>
     </div>
@@ -126,7 +127,7 @@
                 </div>
 
                 <div class=" col col-md-6 d-grid gap-2 p-0 pl-1 tab-button pt-2">
-                    <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()"
+                    <button class=" btn btn-dark" type="button" (click)="verifyOtp($event)" id='emailOtp'
                         [disabled]="verifyEmail.invalid">Submit OTP</button>
                 </div>
             </div>
@@ -134,7 +135,7 @@
     </div>
 
     <div class="container pt-4 mt-4" *ngIf="showSMSOtp">
-        <form class="row g-3" [formGroup]="verifySMS" id="verifyEmail">
+        <form class="row g-3" [formGroup]="verifySMS" id="verifySMS">
             <div class="col-md-6">
                 <label for="smsOTP" class="form-label">Please enter the OTP recieved on your Phone</label>
                 <input type="text" formControlName="smsOTP" class="form-control" id="smsOTP">
@@ -144,10 +145,23 @@
                 </div>
 
                 <div class=" col col-md-6 d-grid gap-2 p-0 pl-1 tab-button pt-2">
-                    <button class=" btn btn-dark" type="button" (click)="applyForOpenAccount()"
+                    <button class=" btn btn-dark" type="button" (click)="verifyOtp($event)" id='smsOTP'
                         [disabled]="verifySMS.invalid">Submit OTP</button>
                 </div>
             </div>
         </form>
+    </div>
+
+    <div *ngIf="showsuccess" class="container pt-4 mt-4">
+        <div class="col-md-6">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Thank you</div>
+                <div class="card-body">
+                    <h5 class="card-title">Apllication recieved</h5>
+                    <p class="card-text">We have recieved your application we will let you know about your application
+                        status. You can track your application with your application id {{applicationId}}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
